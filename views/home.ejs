@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Data</title>
+</head>
+<body>
+        <div class="container">  
+        <div class=" nav justify-content-center" style="margin-top:100px;">  
+        <div class="card border-warning mb-3 " style="max-width: 20rem;">  
+        <div class="card-header"><h5>Upload csv file</h5></div>  
+        <div class="card-body">  
+        <form action="/" method="post" enctype="multipart/form-data">  
+        <input type="file" name="csv"><br><br>  
+        <div class="text-center"><button type="submit" class="btn btn-lg btn-primary">submit</button></div>     
+        </form>  
+        </div>  
+        </div>  
+        </div><br>  
+        <br>  
+        <%if(data){%>  
+            <div>  
+            <table class="table table-hover table-responsive table-stripped  nav justify-content-center" style="width: auto" >   
+            <thead>  
+            <tr class="bg-primary">  
+            <th>S.no</th>  
+            <th>sector_id</th>  
+            <th>avalanche_axis</th>  
+            <th>forecast1</th>  
+            <th>forecast2</th>  
+            <th>forecast3</th>  
+            </tr>  
+            </thead>  
+            
+            <tbody style="overflow-x: scroll; height:350px;" class="table-bordered">  
+            <%for(var i=data.length-1;i>= 0  ;i--){%>  
+            <tr class="text-center">  
+            <td ><%= data.length-i  %></td> 
+            <td style="padding-left: 1em"><%= data[i].sector_id%></td>  
+            <td style="padding-left: 1em"><%= data[i].avalanche_axis%></td>  
+            <td style="padding-left: 1em"><%= data[i].forecast1%></td>  
+            <td style="padding-left: 1.2em"><%= data[i].forecase2%></td>  
+            <td style="padding-left: 1.2em"><%= data[i].forecast3%></td>  
+            </tr>  
+            <%}%>  
+            </tbody>  
+            </table>  
+            </div>  
+            <%}%>  
+        </body> 
+</html>
