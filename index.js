@@ -1,8 +1,15 @@
 const express=require('express');
-const path= require('path');
+const net = require("net");
+var fs = require("fs");
+var path = require('path');
+var process= require('process');
 //The Path module provides a way of working with directories and file paths.
 const port=5000;
 const sender= require('./sender');
+// const recieve= require('./reciever');
+//button for recieve data??/ sync 
+//maybe have submit to sync data as well i.e. sync up the currently submitted data
+//while sync data can be kept to recieve??
 
 
 const db=require('./config/mongoose');
@@ -67,6 +74,8 @@ csv()
 .then(function(jsonObj){  
 
 console.log('there there');
+
+//this loop seems unnessecary- check and remove
 for(var x=0;x<jsonObj;x++){  
 temp = parseFloat(jsonObj[x].sector_id)  
 jsonObj[x].sector_id = temp;  
@@ -95,6 +104,8 @@ res.redirect('/');
 });  
 });  
 }); 
+
+app.get('/sync-data', sender.send);
 
 app.listen(port, function(err){
     if(err){
