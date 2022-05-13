@@ -78,23 +78,23 @@ const ShivMandirSchema=new mongoose.Schema({
     },
 
     GPSstatus2:{
-        type: Number, defaut: 0,
+        type: String, defaut: 0,
     },
 
     Status1:{
-        type: Number, defaut: 0,
+        type: String, defaut: 0,
     },
 
     Status2:{
-        type: Number, defaut: 0,
+        type: String, defaut: 0,
     },
 
     ReportingTime1:{
-        type: Number, defaut: 0,
+        type: String, defaut: 0,
     },
 
     ReportingTime2:{
-        type: Number, defaut: 0,
+        type: String, defaut: 0,
     },
 
     TotalBurst1:{

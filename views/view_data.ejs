@@ -60,12 +60,33 @@ table{
         <table class="table table-hover table-responsive table-stripped  nav justify-content-center" style="width: auto" >   
         <thead class="thead-dark"> 
         <tr class="bg-primary">  
-        <th>S.no</th>  
-        <th>sector_id</th>  
-        <th>avalanche_axis</th>  
-        <th>forecast1</th>  
-        <th>forecast2</th>  
-        <th>forecast3</th>  
+        <th>S No.</th>
+        <th>Date and Time</th>  
+        <th>AT</th>  
+        <th>ATmax</th>  
+        <th>ATmin</th>  
+        <th>Battery</th>  
+        <th>Pressure</th>  
+        <th>RH</th>
+        <th>SnowTemp1</th>
+        <th>WindDir</th>
+        <th>WindSp</th>
+        <th>Albedo_IN</th>
+        <th>Albedo_Out</th>
+        <th>NetRad</th>
+        <th>SD_Avg</th>
+        <th>SD_Ins</th>
+        <th>SnowPreci</th>
+        <th>SnowTemp2</th>
+        <th>SunD</th>
+        <th>GPSstatus1</th>
+        <th>GPSstatus2</th>
+        <th>Status1</th>
+        <th>Status2</th>
+        <th>ReportingTime1</th>
+        <th>ReportingTime2</th>
+        <th>TotalBurst1</th>
+        <th>TotalBurst2</th>
         </tr>  
         </thead>  
         
@@ -74,11 +95,32 @@ table{
         <tr class="text-center">  
         <td ><%= data.length-i  %></td> 
         <!-- <td style="padding-left: 1em"><%= indexes %></td>   -->
-        <td style="padding-left: 1em"><%= data[i].sector_id%></td>  
-        <td style="padding-left: 1em"><%= data[i].avalanche_axis%></td>  
-        <td style="padding-left: 1em"><%= data[i].forecast1%></td>  
-        <td style="padding-left: 1.2em"><%= data[i].forecase2%></td>  
-        <td style="padding-left: 1.2em"><%= data[i].forecast3%></td>  
+        <td style="padding-left: 1em"><%= data[i].DateTime%></td>  
+        <td style="padding-left: 1em"><%= data[i].AT%></td>  
+        <td style="padding-left: 1em"><%= data[i].ATmax%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].ATmin%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].Battery%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].Pressure%></td> 
+        <td style="padding-left: 1.2em"><%= data[i].RH%></td>   
+        <td style="padding-left: 1.2em"><%= data[i].SnowTemp1%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].WindDir%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].WindSp%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].Albedo_IN%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].Albedo_Out%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].NetRad%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].SD_Avg%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].SD_Ins%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].SnowPreci%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].SnowTemp2%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].SunD%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].GPSstatus1%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].GPSstatus2%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].Status1%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].Status2%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].ReportingTime1%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].ReportingTime2%></td> 
+        <td style="padding-left: 1.2em"><%= data[i].TotalBurst1%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].TotalBurst2%></td>  
         </tr>  
         <%}%>  
         </tbody>  

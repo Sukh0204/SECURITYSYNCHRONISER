@@ -8,6 +8,7 @@ var process= require('process');
 const port=5000;
 const sender= require('./sender');
 const recieve= require('./reciever');
+var viewModel = require("./models/shivmandir");
 //button for recieve data??/ sync 
 //maybe have submit to sync data as well i.e. sync up the currently submitted data
 //while sync data can be kept to recieve??
@@ -168,23 +169,65 @@ console.log('there there');
 
 //this loop seems unnessecary- check and remove
 for(var x=0;x<jsonObj;x++){  
-temp = parseFloat(jsonObj[x].sector_id)  
-jsonObj[x].sector_id = temp;  
-temp = parseFloat(jsonObj[x].avalanche_axis)  
-jsonObj[x].avalanche_axis = temp;  
-temp = parseFloat(jsonObj[x].forecast1)  
-jsonObj[x].forecast1 = temp;  
-temp = parseFloat(jsonObj[x].forecast2) 
-jsonObj[x].forecast2 = temp;  
-temp = parseFloat(jsonObj[x].forecast3)  
-jsonObj[x].forecast3 = temp;  
+temp = parseFloat(jsonObj[x].DateTime)  
+jsonObj[x].DateTime = temp;  
+temp = parseFloat(jsonObj[x].AT)  
+jsonObj[x].AT = temp;  
+temp = parseFloat(jsonObj[x].ATmax)  
+jsonObj[x].ATmax = temp;  
+temp = parseFloat(jsonObj[x].ATmin) 
+jsonObj[x].ATmin = temp;  
+temp = parseFloat(jsonObj[x].Battery)  
+jsonObj[x].Battery = temp;  
+temp = parseFloat(jsonObj[x].Pressure)  
+jsonObj[x].Pressure = temp;  
+temp = parseFloat(jsonObj[x].RH)  
+jsonObj[x].Battery = temp;  
+temp = parseFloat(jsonObj[x].SnowTemp1)  
+jsonObj[x].RH = SnowTemp1;  
+temp = parseFloat(jsonObj[x].WindDir)  
+jsonObj[x].WindDir = temp;  
+temp = parseFloat(jsonObj[x].WindSp)  
+jsonObj[x].WindSp = temp;  
+temp = parseFloat(jsonObj[x].Albedo_IN)  
+jsonObj[x].Albedo_IN = temp;  
+temp = parseFloat(jsonObj[x].Albedo_Out)  
+jsonObj[x].Albedo_Out = temp;  
+temp = parseFloat(jsonObj[x].NetRad)  
+jsonObj[x].NetRad = temp;  
+temp = parseFloat(jsonObj[x].SD_Avg)  
+jsonObj[x].SD_Avg = temp;  
+temp = parseFloat(jsonObj[x].SD_Ins) 
+jsonObj[x].SD_Ins = temp;  
+temp = parseFloat(jsonObj[x].SnowPreci)  
+jsonObj[x].SnowPreci = temp;  
+temp = parseFloat(jsonObj[x].SnowTemp2)  
+jsonObj[x].SnowTemp2 = temp;  
+temp = parseFloat(jsonObj[x].SunD)  
+jsonObj[x].SunD = temp;  
+temp = parseFloat(jsonObj[x].GPSstatus1)  
+jsonObj[x].GPSstatus1 = temp;  
+temp = parseFloat(jsonObj[x].GPSstatus2)  
+jsonObj[x].GPSstatus2 = temp;  
+temp = parseFloat(jsonObj[x].Status1)  
+jsonObj[x].Status1 = temp;  
+temp = parseFloat(jsonObj[x].Status2)  
+jsonObj[x].Status2 = temp;  
+temp = parseFloat(jsonObj[x].ReportingTime1)  
+jsonObj[x].ReportingTime1 = temp;  
+temp = parseFloat(jsonObj[x].ReportingTime2)  
+jsonObj[x].ReportingTime2 = temp;  
+temp = parseFloat(jsonObj[x].TotalBurst1)  
+jsonObj[x].TotalBurst1= temp;  
+temp = parseFloat(jsonObj[x].TotalBurst2)  
+jsonObj[x].TotalBurst2 = temp;  
 count++;
 console.log(count);
 } 
 
 //insertmany is used to save bulk data in database.
 //saving the data in collection(table)
-model.insertMany(jsonObj,function(err,data){ 
+viewModel.insertMany(jsonObj,function(err,data){ 
     count=jsonObj.length;
     console.log(jsonObj.length);
 if(err){  
@@ -201,7 +244,7 @@ app.get('/accept-data', recieve.got);
 app.get('/view', function(req, res){
     console.log('Line 105 works');
     console.log(count);
-    model.find(function(err, data){
+    viewModel.find(function(err, data){
         if(err){console.log(err);}
         else{
            // console.log(data);
@@ -223,11 +266,11 @@ app.get('/view', function(req, res){
 //
 //view published data 
 //
-var publishModel = require("./models/shivmandir");
+
 app.get('/publish-data', function(req, res){
     console.log('publish data route');
     console.log(count);
-    publishModel.find(function(err, data){
+    model.find(function(err, data){
         if(err){console.log(err);}
         else{
            // console.log(data);
