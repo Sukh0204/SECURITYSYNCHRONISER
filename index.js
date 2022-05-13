@@ -47,7 +47,7 @@ var uploads = multer({storage: storage});
 
 //get and post functions to render pages
 //dis rendering home wid the data
-app.get('/',(req,res)=>{  
+app.get('/secret',(req,res)=>{  
     console.log('Line 44 works');
     res.render('home');
     // model.find((err,data)=>{  
@@ -66,7 +66,7 @@ app.get('/',(req,res)=>{
 //this is adding the data via a json object array
 var temp ;  
 
-app.post('/',uploads.single('csv'), function(req,res){  
+app.post('/secret',uploads.single('csv'), function(req,res){  
 console.log(req.file.filename);
 console.log(req.file.length);
 count= req.file.length;
@@ -101,7 +101,7 @@ model.insertMany(jsonObj,function(err,data){
 if(err){  
 console.log(err);  
 }else{  
-res.redirect('/');  
+res.redirect('/secret');  
 }  
 });  
 });  
