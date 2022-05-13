@@ -113,6 +113,12 @@ function isLoggedIn(req, res, next) {
     res.redirect("/login");
 }
 
+//
+//
+//Uploading Data
+//
+//
+
 //multer for storing the form data 
 var storage = multer.diskStorage({  
     destination:function(req,file,cb){  
@@ -205,6 +211,32 @@ app.get('/view', function(req, res){
                     'indexes':count});  
             }else{  
             res.render('view_data',{data:''});  
+            }  
+        }
+    })
+});
+
+//if recieved directory is not empty file lo and usko bhedo database mein
+//but this process should happen instantaneously coz if another file is added before data sync up 
+//data recieved pehle will be permanently lost
+
+//
+//view published data 
+//
+var publishModel = require("./models/shivmandir");
+app.get('/publish-data', function(req, res){
+    console.log('publish data route');
+    console.log(count);
+    publishModel.find(function(err, data){
+        if(err){console.log(err);}
+        else{
+           // console.log(data);
+            if(data!=''){
+                res.render('publish_data', {
+                    data:data,
+                    'indexes':count});  
+            }else{  
+            res.render('publish_data',{data:''});  
             }  
         }
     })
