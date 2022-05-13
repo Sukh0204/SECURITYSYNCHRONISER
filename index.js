@@ -1,4 +1,5 @@
 const express=require('express');
+const passport = require("passport");
 const net = require("net");
 var fs = require("fs");
 var path = require('path');
@@ -18,6 +19,11 @@ var multer= require('multer');
 var csv= require('csvtojson');  
 var bodyParser  = require('body-parser'); 
 
+
+const LocalStrategy = require("passport-local");
+const passportLocalMongoose = require("passport-local-mongoose");
+const User = require("./models/user");
+
 const app= express();// create an instance /object from express
 
 app.set('view engine', 'ejs'); //setting our view engine as ejs
@@ -27,8 +33,85 @@ app.use(express.static(path.resolve(__dirname,'public')));
 //app.use('/', require('./routes'));//using our routes
 app.use(express.urlencoded()); //middleware for parser- preprocessing data
 app.use(express.static('assets')); //middleware for static pages- read em
-app.use(bodyParser.urlencoded({extended:false})); 
+app.use(bodyParser.urlencoded({extended:true})); 
 
+//
+//
+//login and sign in pages
+//
+//
+app.use(require("express-session")({
+    secret: "Rusty is a dog",
+    resave: false,
+    saveUninitialized: false
+}));
+ 
+app.use(passport.initialize());
+app.use(passport.session());
+ 
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+//=====================
+// ROUTES
+//=====================
+ 
+// Showing home page
+app.get("/", function (req, res) {
+    res.render("home");
+});
+ 
+// Showing secret page
+app.get("/secret", isLoggedIn, function (req, res) {
+    res.render("secret");
+});
+ 
+// Showing register form
+app.get("/register", function (req, res) {
+    res.render("register");
+});
+ 
+// Handling user signup
+app.post("/register", function (req, res) {
+    var username = req.body.username
+    var password = req.body.password
+    User.register(new User({ username: username }),
+            password, function (err, user) {
+        if (err) {
+            console.log(err);
+            return res.render("register");
+        }
+ 
+        passport.authenticate("local")(
+            req, res, function () {
+            res.render("secret");
+        });
+    });
+});
+ 
+//Showing login form
+app.get("/login", function (req, res) {
+    res.render("login");
+});
+ 
+//Handling user login
+app.post("/login", passport.authenticate("local", {
+    successRedirect: "/secret",
+    failureRedirect: "/login"
+}), function (req, res) {
+});
+ 
+//Handling user logout
+app.get("/logout", function (req, res) {
+    req.logout();
+    res.redirect("/");
+});
+ 
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) return next();
+    res.redirect("/login");
+}
 
 //multer for storing the form data 
 var storage = multer.diskStorage({  
