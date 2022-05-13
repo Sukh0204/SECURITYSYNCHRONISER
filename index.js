@@ -6,7 +6,7 @@ var process= require('process');
 //The Path module provides a way of working with directories and file paths.
 const port=5000;
 const sender= require('./sender');
-// const recieve= require('./reciever');
+const recieve= require('./reciever');
 //button for recieve data??/ sync 
 //maybe have submit to sync data as well i.e. sync up the currently submitted data
 //while sync data can be kept to recieve??
@@ -48,17 +48,19 @@ var uploads = multer({storage: storage});
 //get and post functions to render pages
 //dis rendering home wid the data
 app.get('/',(req,res)=>{  
-    model.find((err,data)=>{  
-    if(err){  
-    console.log(err);  
-    }else{  
-    if(data!=''){  
-    res.render('home',{data:data});  
-    }else{  
-    res.render('home',{data:''});  
-    }  
-    }  
-    });  
+    console.log('Line 44 works');
+    res.render('home');
+    // model.find((err,data)=>{  
+    // if(err){  
+    // console.log(err);  
+    // }else{  
+    // if(data!=''){  
+    // res.render('home',{data:data});  
+    // }else{  
+    // res.render('home',{data:''});  
+    // }  
+    // }  
+    // });  
     }); 
 
 //this is adding the data via a json object array
@@ -106,6 +108,24 @@ res.redirect('/');
 }); 
 
 app.get('/sync-data', sender.send);
+app.get('/accept-data', recieve.got);
+app.get('/view', function(req, res){
+    console.log('Line 105 works');
+    console.log(count);
+    model.find(function(err, data){
+        if(err){console.log(err);}
+        else{
+           // console.log(data);
+            if(data!=''){
+                res.render('view_data', {
+                    data:data,
+                    'indexes':count});  
+            }else{  
+            res.render('view_data',{data:''});  
+            }  
+        }
+    })
+});
 
 app.listen(port, function(err){
     if(err){
