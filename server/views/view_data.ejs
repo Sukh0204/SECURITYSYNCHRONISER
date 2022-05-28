@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Data</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+        body{
+    text-align: center ;
+    max-width: 500px;
+    margin: auto;
+}
+
+table{
+    text-align: center ;
+    max-width: 500px;
+    margin: auto;
+}
+    </style>
+</head>
+<body>
+    <!-- this is navbar- make sep file -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+      <!-- navbar ends  -->
+      <br>
+      <br>
+    <%if(data){%>  
+        <div>  
+        <table class="table table-hover table-responsive table-stripped  nav justify-content-center" style="width: auto" >   
+        <thead class="thead-dark"> 
+        <tr class="bg-primary">  
+        <th>S No.</th>
+        <th>Date and Time</th>  
+        <th>AT</th>  
+        <th>ATmax</th>  
+        <th>ATmin</th>  
+        <th>Battery</th>  
+        <th>Pressure</th>  
+        <th>RH</th>
+        <th>SnowTemp1</th>
+        <th>WindDir</th>
+        <th>WindSp</th>
+        <th>Albedo_IN</th>
+        <th>Albedo_Out</th>
+        <th>NetRad</th>
+        <th>SD_Avg</th>
+        <th>SD_Ins</th>
+        <th>SnowPreci</th>
+        <th>SnowTemp2</th>
+        <th>SunD</th>
+        <th>GPSstatus1</th>
+        <th>GPSstatus2</th>
+        <th>Status1</th>
+        <th>Status2</th>
+        <th>ReportingTime1</th>
+        <th>ReportingTime2</th>
+        <th>TotalBurst1</th>
+        <th>TotalBurst2</th>
+        </tr>  
+        </thead>  
+        
+        <tbody style="overflow-x: scroll; height:350px;" class="table-bordered">  
+        <%for(var i=data.length-1;i>= 0   ;i--){%>  
+        <tr class="text-center">  
+        <td ><%= data.length-i  %></td> 
+        <!-- <td style="padding-left: 1em"><%= indexes %></td>   -->
+        <td style="padding-left: 1em"><%= data[i].DateTime%></td>  
+        <td style="padding-left: 1em"><%= data[i].AT%></td>  
+        <td style="padding-left: 1em"><%= data[i].ATmax%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].ATmin%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].Battery%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].Pressure%></td> 
+        <td style="padding-left: 1.2em"><%= data[i].RH%></td>   
+        <td style="padding-left: 1.2em"><%= data[i].SnowTemp1%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].WindDir%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].WindSp%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].Albedo_IN%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].Albedo_Out%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].NetRad%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].SD_Avg%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].SD_Ins%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].SnowPreci%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].SnowTemp2%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].SunD%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].GPSstatus1%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].GPSstatus2%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].Status1%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].Status2%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].ReportingTime1%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].ReportingTime2%></td> 
+        <td style="padding-left: 1.2em"><%= data[i].TotalBurst1%></td>  
+        <td style="padding-left: 1.2em"><%= data[i].TotalBurst2%></td>  
+        </tr>  
+        <%}%>  
+        </tbody>  
+        </table>  
+        </div>  
+        <%}%>  
+</body>
+</html>
