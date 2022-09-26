@@ -25,8 +25,7 @@ securely and quickly between two systems connected via ethernet.
 
 Software described in the document is created for synchronization of two separate databases over LAN ethernet with an interactive GUI. The system will allow users to
 upload the spatial data in form of CSV files and save it in a local database. The host can then choose to Sync the data with the other system(s) by simply clicking on
-a sync button. This will be an accurate, user-friendly, intelligent and efficient product which would be specific to the needs of DRDO-DGRE and meet the requirements of 
-end users and planners, which can help in data transfer and management.
+a sync button. This will be an accurate, user-friendly, intelligent and efficient product which would be specific to the needs of high security organisations and meet the requirements of end users and planners, which can help in data transfer and management.
 
 **Software Requirements**
 
