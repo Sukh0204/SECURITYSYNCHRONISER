@@ -3,7 +3,7 @@
 **Why was there a need for the project?**
 
 
-The transfer of huge volumes of data without any leaks, has always been an area of concern for an organization such as DRDO. Currently database synchronization systems
+The transfer of huge volumes of data without any leaks, has always been an area of concern for an organization. Currently database synchronization systems
 are over the web but LAN is not only faster but also has a consistent speed and can hence accommodate transfer of a large amount of data. This synchronization also 
 occurs discreetly which is otherwise difficult to achieve with the existing systems. In addition to this data sent over LAN can only be accessed by devices that are 
 physically attached to that network, and thus there is no chance of data loss or hacking hence data need not be encrypted. Conventional approaches of data transfer on t
@@ -14,7 +14,7 @@ two systems connected via ethernet.
 **Problem Statement and Purpose of Project**
 
 
-Transmission of huge volumes of data has always been an area of concern for an organization such as DRDO. It is important that the data remain private, without any leaks
+Transmission of huge volumes of data has always been an area of concern for an organization. It is important that the data remain private, without any leaks
 and is transferred at a quick rate nonetheless. Conventional approaches such as data transfer on the cloud are out of the picture due to risks of security breach and 
 approaches such as FTP are difficult to implement when this data transfer is occurring very frequently. Hence the need was felt to develop a tool to transfer data 
 securely and quickly between two systems connected via ethernet.
